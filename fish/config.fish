@@ -1,36 +1,575 @@
-function rotate_ghostty_theme
-    # Edit this list to your preferred themes
-    set themes \
-        "nord" \
-        "Gruvbox Dark" \
-        "ayu" \
-        "rose-pine" \
-        "One Dark" \
-        "nightfox" \
-        "Catppuccin Mocha" \
-        "Github Dark" \
-        "Monokai Pro" \
-        "rose-pine-moon"
+# GHOSTTY THEME ROTATOR
+set -g __GHOSTTY_CONFIG ~/.config/ghostty/config
+set -g __THEME_STATE    ~/.config/ghostty/theme_state
 
-    set day (date +%j)              # day of year: 1–365
-    set count (count $themes)       # how many themes you have
-    set index (math "$day % $count + 1")   # picks a slot, cycles forever
-    set selected $themes[$index]
+set -g __LIGHT_THEMES
+set -a __LIGHT_THEMES "3024 Day"
+set -a __LIGHT_THEMES "Adwaita"
+set -a __LIGHT_THEMES "Aizen Light"
+set -a __LIGHT_THEMES "Alabaster"
+set -a __LIGHT_THEMES "Apple System Colors Light"
+set -a __LIGHT_THEMES "Atom One Light"
+set -a __LIGHT_THEMES "Ayu Light"
+set -a __LIGHT_THEMES "Belafonte Day"
+set -a __LIGHT_THEMES "Bluloco Light"
+set -a __LIGHT_THEMES "Breadog"
+set -a __LIGHT_THEMES "Builtin Light"
+set -a __LIGHT_THEMES "Builtin Tango Light"
+set -a __LIGHT_THEMES "Catppuccin Latte"
+set -a __LIGHT_THEMES "CLRS"
+set -a __LIGHT_THEMES "Coffee Theme"
+set -a __LIGHT_THEMES "Dawnfox"
+set -a __LIGHT_THEMES "Dayfox"
+set -a __LIGHT_THEMES "Everforest Light Med"
+set -a __LIGHT_THEMES "Farmhouse Light"
+set -a __LIGHT_THEMES "Flexoki Light"
+set -a __LIGHT_THEMES "GitHub"
+set -a __LIGHT_THEMES "GitHub Light Colorblind"
+set -a __LIGHT_THEMES "GitHub Light Default"
+set -a __LIGHT_THEMES "GitHub Light High Contrast"
+set -a __LIGHT_THEMES "GitLab Light"
+set -a __LIGHT_THEMES "Gruvbox Light"
+set -a __LIGHT_THEMES "Gruvbox Light Hard"
+set -a __LIGHT_THEMES "Gruvbox Material Light"
+set -a __LIGHT_THEMES "Havn Daggry"
+set -a __LIGHT_THEMES "Horizon Bright"
+set -a __LIGHT_THEMES "Hot Dog Stand (Mustard)"
+set -a __LIGHT_THEMES "Iceberg Light"
+set -a __LIGHT_THEMES "iTerm2 Light Background"
+set -a __LIGHT_THEMES "iTerm2 Solarized Light"
+set -a __LIGHT_THEMES "iTerm2 Tango Light"
+set -a __LIGHT_THEMES "Kanagawa Lotus"
+set -a __LIGHT_THEMES "Kanso Pearl"
+set -a __LIGHT_THEMES "Light Owl"
+set -a __LIGHT_THEMES "Man Page"
+set -a __LIGHT_THEMES "Material"
+set -a __LIGHT_THEMES "Melange Light"
+set -a __LIGHT_THEMES "Modus Operandi"
+set -a __LIGHT_THEMES "Modus Operandi Tinted"
+set -a __LIGHT_THEMES "Monokai Pro Light"
+set -a __LIGHT_THEMES "Monokai Pro Light Sun"
+set -a __LIGHT_THEMES "Neobones Light"
+set -a __LIGHT_THEMES "Night Owlish Light"
+set -a __LIGHT_THEMES "No Clown Fiesta Light"
+set -a __LIGHT_THEMES "Nord Light"
+set -a __LIGHT_THEMES "Novel"
+set -a __LIGHT_THEMES "Nvim Light"
+set -a __LIGHT_THEMES "One Double Light"
+set -a __LIGHT_THEMES "One Half Light"
+set -a __LIGHT_THEMES "Onenord Light"
+set -a __LIGHT_THEMES "Pencil Light"
+set -a __LIGHT_THEMES "Piatto Light"
+set -a __LIGHT_THEMES "Poimandres White"
+set -a __LIGHT_THEMES "Primary"
+set -a __LIGHT_THEMES "Pro Light"
+set -a __LIGHT_THEMES "Raycast Light"
+set -a __LIGHT_THEMES "Rose Pine Dawn"
+set -a __LIGHT_THEMES "Selenized Light"
+set -a __LIGHT_THEMES "Seoulbones Light"
+set -a __LIGHT_THEMES "Spring"
+set -a __LIGHT_THEMES "Tango Adapted"
+set -a __LIGHT_THEMES "Tango Half Adapted"
+set -a __LIGHT_THEMES "Terminal Basic"
+set -a __LIGHT_THEMES "Tinacious Design Light"
+set -a __LIGHT_THEMES "TokyoNight Day"
+set -a __LIGHT_THEMES "Tomorrow"
+set -a __LIGHT_THEMES "Unikitty"
+set -a __LIGHT_THEMES "Vimbones"
+set -a __LIGHT_THEMES "Violet Light"
+set -a __LIGHT_THEMES "Xcode Light"
+set -a __LIGHT_THEMES "Xcode Light hc"
+set -a __LIGHT_THEMES "Zenbones"
+set -a __LIGHT_THEMES "Zenbones Light"
+set -a __LIGHT_THEMES "Zenwritten Light"
 
-    set config ~/.config/ghostty/config
+set -g __DARK_THEMES
+set -a __DARK_THEMES "0x96f"
+set -a __DARK_THEMES "12-bit Rainbow"
+set -a __DARK_THEMES "3024 Night"
+set -a __DARK_THEMES "Aardvark Blue"
+set -a __DARK_THEMES "Abernathy"
+set -a __DARK_THEMES "Adventure"
+set -a __DARK_THEMES "Adventure Time"
+set -a __DARK_THEMES "Adwaita Dark"
+set -a __DARK_THEMES "Afterglow"
+set -a __DARK_THEMES "Aizen Dark"
+set -a __DARK_THEMES "Alien Blood"
+set -a __DARK_THEMES "Andromeda"
+set -a __DARK_THEMES "Apple Classic"
+set -a __DARK_THEMES "Apple System Colors"
+set -a __DARK_THEMES "Arcoiris"
+set -a __DARK_THEMES "Ardoise"
+set -a __DARK_THEMES "Argonaut"
+set -a __DARK_THEMES "Arthur"
+set -a __DARK_THEMES "Atelier Sulphurpool"
+set -a __DARK_THEMES "Atom"
+set -a __DARK_THEMES "Atom One Dark"
+set -a __DARK_THEMES "Aura"
+set -a __DARK_THEMES "Aurora"
+set -a __DARK_THEMES "Ayu"
+set -a __DARK_THEMES "Ayu Mirage"
+set -a __DARK_THEMES "Banana Blueberry"
+set -a __DARK_THEMES "Batman"
+set -a __DARK_THEMES "Belafonte Night"
+set -a __DARK_THEMES "Birds Of Paradise"
+set -a __DARK_THEMES "Black Metal"
+set -a __DARK_THEMES "Black Metal (Bathory)"
+set -a __DARK_THEMES "Black Metal (Burzum)"
+set -a __DARK_THEMES "Black Metal (Dark Funeral)"
+set -a __DARK_THEMES "Black Metal (Gorgoroth)"
+set -a __DARK_THEMES "Black Metal (Immortal)"
+set -a __DARK_THEMES "Black Metal (Khold)"
+set -a __DARK_THEMES "Black Metal (Marduk)"
+set -a __DARK_THEMES "Black Metal (Mayhem)"
+set -a __DARK_THEMES "Black Metal (Nile)"
+set -a __DARK_THEMES "Black Metal (Venom)"
+set -a __DARK_THEMES "Blazer"
+set -a __DARK_THEMES "Blue Berry Pie"
+set -a __DARK_THEMES "Blue Dolphin"
+set -a __DARK_THEMES "Blue Matrix"
+set -a __DARK_THEMES "Bluloco Dark"
+set -a __DARK_THEMES "Borland"
+set -a __DARK_THEMES "Box"
+set -a __DARK_THEMES "branch"
+set -a __DARK_THEMES "Breeze"
+set -a __DARK_THEMES "Bright Lights"
+set -a __DARK_THEMES "Broadcast"
+set -a __DARK_THEMES "Brogrammer"
+set -a __DARK_THEMES "Builtin Dark"
+set -a __DARK_THEMES "Builtin Pastel Dark"
+set -a __DARK_THEMES "Builtin Tango Dark"
+set -a __DARK_THEMES "C64"
+set -a __DARK_THEMES "Calamity"
+set -a __DARK_THEMES "Carbonfox"
+set -a __DARK_THEMES "Catppuccin Frappe"
+set -a __DARK_THEMES "Catppuccin Macchiato"
+set -a __DARK_THEMES "Catppuccin Mocha"
+set -a __DARK_THEMES "CGA"
+set -a __DARK_THEMES "Chalk"
+set -a __DARK_THEMES "Chalkboard"
+set -a __DARK_THEMES "Challenger Deep"
+set -a __DARK_THEMES "Chester"
+set -a __DARK_THEMES "Ciapre"
+set -a __DARK_THEMES "Citruszest"
+set -a __DARK_THEMES "Cobalt Neon"
+set -a __DARK_THEMES "Cobalt Next"
+set -a __DARK_THEMES "Cobalt Next Dark"
+set -a __DARK_THEMES "Cobalt Next Minimal"
+set -a __DARK_THEMES "Cobalt2"
+set -a __DARK_THEMES "Crayon Pony Fish"
+set -a __DARK_THEMES "Cursor Dark"
+set -a __DARK_THEMES "Cutie Pro"
+set -a __DARK_THEMES "Cyberdyne"
+set -a __DARK_THEMES "Cyberpunk"
+set -a __DARK_THEMES "Cyberpunk Scarlet Protocol"
+set -a __DARK_THEMES "Dark Modern"
+set -a __DARK_THEMES "Dark Pastel"
+set -a __DARK_THEMES "Dark+"
+set -a __DARK_THEMES "Darkermatrix"
+set -a __DARK_THEMES "Darkmatrix"
+set -a __DARK_THEMES "Darkside"
+set -a __DARK_THEMES "Deep"
+set -a __DARK_THEMES "Desert"
+set -a __DARK_THEMES "Detuned"
+set -a __DARK_THEMES "Dimidium"
+set -a __DARK_THEMES "Dimmed Monokai"
+set -a __DARK_THEMES "Django"
+set -a __DARK_THEMES "Django Reborn Again"
+set -a __DARK_THEMES "Django Smooth"
+set -a __DARK_THEMES "Doom One"
+set -a __DARK_THEMES "Doom Peacock"
+set -a __DARK_THEMES "Dot Gov"
+set -a __DARK_THEMES "Dracula"
+set -a __DARK_THEMES "Dracula+"
+set -a __DARK_THEMES "Duckbones"
+set -a __DARK_THEMES "Duotone Dark"
+set -a __DARK_THEMES "Duskfox"
+set -a __DARK_THEMES "Earthsong"
+set -a __DARK_THEMES "Electron Highlighter"
+set -a __DARK_THEMES "Elegant"
+set -a __DARK_THEMES "Elemental"
+set -a __DARK_THEMES "Elementary"
+set -a __DARK_THEMES "Embark"
+set -a __DARK_THEMES "Embers Dark"
+set -a __DARK_THEMES "ENCOM"
+set -a __DARK_THEMES "Espresso"
+set -a __DARK_THEMES "Espresso Libre"
+set -a __DARK_THEMES "Everblush"
+set -a __DARK_THEMES "Everforest Dark Hard"
+set -a __DARK_THEMES "Fahrenheit"
+set -a __DARK_THEMES "Fairyfloss"
+set -a __DARK_THEMES "Farmhouse Dark"
+set -a __DARK_THEMES "Fideloper"
+set -a __DARK_THEMES "Firefly Traditional"
+set -a __DARK_THEMES "Firefox Dev"
+set -a __DARK_THEMES "Firewatch"
+set -a __DARK_THEMES "Fish Tank"
+set -a __DARK_THEMES "Flat"
+set -a __DARK_THEMES "Flatland"
+set -a __DARK_THEMES "Flexoki Dark"
+set -a __DARK_THEMES "Floraverse"
+set -a __DARK_THEMES "Forest Blue"
+set -a __DARK_THEMES "Framer"
+set -a __DARK_THEMES "Front End Delight"
+set -a __DARK_THEMES "Fun Forrest"
+set -a __DARK_THEMES "Galaxy"
+set -a __DARK_THEMES "Galizur"
+set -a __DARK_THEMES "Ghostty Default Style Dark"
+set -a __DARK_THEMES "GitHub Dark"
+set -a __DARK_THEMES "GitHub Dark Colorblind"
+set -a __DARK_THEMES "GitHub Dark Default"
+set -a __DARK_THEMES "GitHub Dark Dimmed"
+set -a __DARK_THEMES "GitHub Dark High Contrast"
+set -a __DARK_THEMES "GitLab Dark"
+set -a __DARK_THEMES "GitLab Dark Grey"
+set -a __DARK_THEMES "Glacier"
+set -a __DARK_THEMES "Grape"
+set -a __DARK_THEMES "Grass"
+set -a __DARK_THEMES "Grey Green"
+set -a __DARK_THEMES "Gruber Darker"
+set -a __DARK_THEMES "Gruvbox Dark"
+set -a __DARK_THEMES "Gruvbox Dark Hard"
+set -a __DARK_THEMES "Gruvbox Material"
+set -a __DARK_THEMES "Gruvbox Material Dark"
+set -a __DARK_THEMES "Guezwhoz"
+set -a __DARK_THEMES "Hacktober"
+set -a __DARK_THEMES "Hardcore"
+set -a __DARK_THEMES "Harper"
+set -a __DARK_THEMES "Havn Skumring"
+set -a __DARK_THEMES "HaX0R Blue"
+set -a __DARK_THEMES "HaX0R Gr33N"
+set -a __DARK_THEMES "HaX0R R3D"
+set -a __DARK_THEMES "Heeler"
+set -a __DARK_THEMES "Highway"
+set -a __DARK_THEMES "Hipster Green"
+set -a __DARK_THEMES "Hivacruz"
+set -a __DARK_THEMES "Homebrew"
+set -a __DARK_THEMES "Hopscotch"
+set -a __DARK_THEMES "Hopscotch.256"
+set -a __DARK_THEMES "Horizon"
+set -a __DARK_THEMES "Hot Dog Stand"
+set -a __DARK_THEMES "Hurtado"
+set -a __DARK_THEMES "Hybrid"
+set -a __DARK_THEMES "IBM 5153 CGA"
+set -a __DARK_THEMES "IBM 5153 CGA (Black)"
+set -a __DARK_THEMES "IC Green PPL"
+set -a __DARK_THEMES "IC Orange PPL"
+set -a __DARK_THEMES "Iceberg Dark"
+set -a __DARK_THEMES "Idea"
+set -a __DARK_THEMES "Idle Toes"
+set -a __DARK_THEMES "IR Black"
+set -a __DARK_THEMES "IRIX Console"
+set -a __DARK_THEMES "IRIX Terminal"
+set -a __DARK_THEMES "iTerm2 Dark Background"
+set -a __DARK_THEMES "iTerm2 Default"
+set -a __DARK_THEMES "iTerm2 Pastel Dark Background"
+set -a __DARK_THEMES "iTerm2 Smoooooth"
+set -a __DARK_THEMES "iTerm2 Solarized Dark"
+set -a __DARK_THEMES "iTerm2 Tango Dark"
+set -a __DARK_THEMES "Jackie Brown"
+set -a __DARK_THEMES "Japanesque"
+set -a __DARK_THEMES "Jellybeans"
+set -a __DARK_THEMES "JetBrains Darcula"
+set -a __DARK_THEMES "Jubi"
+set -a __DARK_THEMES "Kanagawa Dragon"
+set -a __DARK_THEMES "Kanagawa Wave"
+set -a __DARK_THEMES "Kanagawabones"
+set -a __DARK_THEMES "Kanso Ink"
+set -a __DARK_THEMES "Kanso Mist"
+set -a __DARK_THEMES "Kanso Zen"
+set -a __DARK_THEMES "Kibble"
+set -a __DARK_THEMES "Kitty Default"
+set -a __DARK_THEMES "Kitty Low Contrast"
+set -a __DARK_THEMES "Kolorit"
+set -a __DARK_THEMES "Konsolas"
+set -a __DARK_THEMES "Kurokula"
+set -a __DARK_THEMES "Lab Fox"
+set -a __DARK_THEMES "Laser"
+set -a __DARK_THEMES "Later This Evening"
+set -a __DARK_THEMES "Lavandula"
+set -a __DARK_THEMES "Liquid Carbon"
+set -a __DARK_THEMES "Liquid Carbon Transparent"
+set -a __DARK_THEMES "Lovelace"
+set -a __DARK_THEMES "Mariana"
+set -a __DARK_THEMES "Material Dark"
+set -a __DARK_THEMES "Material Darker"
+set -a __DARK_THEMES "Material Design Colors"
+set -a __DARK_THEMES "Material Ocean"
+set -a __DARK_THEMES "Mathias"
+set -a __DARK_THEMES "Matrix"
+set -a __DARK_THEMES "Matte Black"
+set -a __DARK_THEMES "Medallion"
+set -a __DARK_THEMES "Melange Dark"
+set -a __DARK_THEMES "Mellifluous"
+set -a __DARK_THEMES "Mellow"
+set -a __DARK_THEMES "Miasma"
+set -a __DARK_THEMES "Midnight In Mojave"
+set -a __DARK_THEMES "Mirage"
+set -a __DARK_THEMES "Misterioso"
+set -a __DARK_THEMES "Modus Vivendi"
+set -a __DARK_THEMES "Modus Vivendi Tinted"
+set -a __DARK_THEMES "Molokai"
+set -a __DARK_THEMES "Mona Lisa"
+set -a __DARK_THEMES "Monokai Classic"
+set -a __DARK_THEMES "Monokai Pro"
+set -a __DARK_THEMES "Monokai Pro Machine"
+set -a __DARK_THEMES "Monokai Pro Octagon"
+set -a __DARK_THEMES "Monokai Pro Ristretto"
+set -a __DARK_THEMES "Monokai Pro Spectrum"
+set -a __DARK_THEMES "Monokai Remastered"
+set -a __DARK_THEMES "Monokai Soda"
+set -a __DARK_THEMES "Monokai Vivid"
+set -a __DARK_THEMES "Moonfly"
+set -a __DARK_THEMES "N0Tch2K"
+set -a __DARK_THEMES "Neobones Dark"
+set -a __DARK_THEMES "Neon"
+set -a __DARK_THEMES "Neopolitan"
+set -a __DARK_THEMES "Neutron"
+set -a __DARK_THEMES "Night Lion V1"
+set -a __DARK_THEMES "Night Lion V2"
+set -a __DARK_THEMES "Night Owl"
+set -a __DARK_THEMES "Nightfox"
+set -a __DARK_THEMES "Niji"
+set -a __DARK_THEMES "No Clown Fiesta"
+set -a __DARK_THEMES "Nocturnal Winter"
+set -a __DARK_THEMES "Nord"
+set -a __DARK_THEMES "Nord Wave"
+set -a __DARK_THEMES "Nordfox"
+set -a __DARK_THEMES "novmbr"
+set -a __DARK_THEMES "Nvim Dark"
+set -a __DARK_THEMES "Obsidian"
+set -a __DARK_THEMES "Ocean"
+set -a __DARK_THEMES "Oceanic Material"
+set -a __DARK_THEMES "Oceanic Next"
+set -a __DARK_THEMES "Ollie"
+set -a __DARK_THEMES "One Dark Two"
+set -a __DARK_THEMES "One Double Dark"
+set -a __DARK_THEMES "One Half Dark"
+set -a __DARK_THEMES "Onenord"
+set -a __DARK_THEMES "Operator Mono Dark"
+set -a __DARK_THEMES "Overnight Slumber"
+set -a __DARK_THEMES "owl"
+set -a __DARK_THEMES "Oxocarbon"
+set -a __DARK_THEMES "Pale Night Hc"
+set -a __DARK_THEMES "Pandora"
+set -a __DARK_THEMES "Paraiso Dark"
+set -a __DARK_THEMES "Paul Millr"
+set -a __DARK_THEMES "Pencil Dark"
+set -a __DARK_THEMES "Peppermint"
+set -a __DARK_THEMES "Phala Green Dark"
+set -a __DARK_THEMES "Pnevma"
+set -a __DARK_THEMES "Poimandres"
+set -a __DARK_THEMES "Poimandres Darker"
+set -a __DARK_THEMES "Poimandres Storm"
+set -a __DARK_THEMES "Popping And Locking"
+set -a __DARK_THEMES "Powershell"
+set -a __DARK_THEMES "Pro"
+set -a __DARK_THEMES "Purple Rain"
+set -a __DARK_THEMES "Purplepeter"
+set -a __DARK_THEMES "Rapture"
+set -a __DARK_THEMES "Raycast Dark"
+set -a __DARK_THEMES "Rebecca"
+set -a __DARK_THEMES "Red Alert"
+set -a __DARK_THEMES "Red Planet"
+set -a __DARK_THEMES "Red Sands"
+set -a __DARK_THEMES "Relaxed"
+set -a __DARK_THEMES "Retro"
+set -a __DARK_THEMES "Retro Legends"
+set -a __DARK_THEMES "Rippedcasts"
+set -a __DARK_THEMES "Rose Pine"
+set -a __DARK_THEMES "Rose Pine Moon"
+set -a __DARK_THEMES "Rouge 2"
+set -a __DARK_THEMES "Royal"
+set -a __DARK_THEMES "Ryuuko"
+set -a __DARK_THEMES "Sakura"
+set -a __DARK_THEMES "Scarlet Protocol"
+set -a __DARK_THEMES "Sea Shells"
+set -a __DARK_THEMES "Seafoam Pastel"
+set -a __DARK_THEMES "Selenized Black"
+set -a __DARK_THEMES "Selenized Dark"
+set -a __DARK_THEMES "Seoulbones Dark"
+set -a __DARK_THEMES "Seti"
+set -a __DARK_THEMES "Shades Of Purple"
+set -a __DARK_THEMES "Shaman"
+set -a __DARK_THEMES "Slate"
+set -a __DARK_THEMES "Sleepy Hollow"
+set -a __DARK_THEMES "Smyck"
+set -a __DARK_THEMES "Snazzy"
+set -a __DARK_THEMES "Snazzy Soft"
+set -a __DARK_THEMES "Soft Server"
+set -a __DARK_THEMES "Solarized Darcula"
+set -a __DARK_THEMES "Solarized Dark Higher Contrast"
+set -a __DARK_THEMES "Solarized Dark Patched"
+set -a __DARK_THEMES "Solarized Osaka Night"
+set -a __DARK_THEMES "Sonokai"
+set -a __DARK_THEMES "Spacedust"
+set -a __DARK_THEMES "Spacegray"
+set -a __DARK_THEMES "Spacegray Bright"
+set -a __DARK_THEMES "Spacegray Eighties"
+set -a __DARK_THEMES "Spacegray Eighties Dull"
+set -a __DARK_THEMES "Spiderman"
+set -a __DARK_THEMES "Square"
+set -a __DARK_THEMES "Squirrelsong Dark"
+set -a __DARK_THEMES "Srcery"
+set -a __DARK_THEMES "Starlight"
+set -a __DARK_THEMES "Sublette"
+set -a __DARK_THEMES "Subliminal"
+set -a __DARK_THEMES "Sugarplum"
+set -a __DARK_THEMES "Sundried"
+set -a __DARK_THEMES "Sunset Drive"
+set -a __DARK_THEMES "Symfonic"
+set -a __DARK_THEMES "Synthwave"
+set -a __DARK_THEMES "Synthwave Alpha"
+set -a __DARK_THEMES "Synthwave Everything"
+set -a __DARK_THEMES "Tearout"
+set -a __DARK_THEMES "Teerb"
+set -a __DARK_THEMES "Terafox"
+set -a __DARK_THEMES "Terminal Basic Dark"
+set -a __DARK_THEMES "Thayer Bright"
+set -a __DARK_THEMES "The Hulk"
+set -a __DARK_THEMES "Tinacious Design Dark"
+set -a __DARK_THEMES "TokyoNight"
+set -a __DARK_THEMES "TokyoNight Moon"
+set -a __DARK_THEMES "TokyoNight Night"
+set -a __DARK_THEMES "TokyoNight Storm"
+set -a __DARK_THEMES "Tomorrow Night"
+set -a __DARK_THEMES "Tomorrow Night Blue"
+set -a __DARK_THEMES "Tomorrow Night Bright"
+set -a __DARK_THEMES "Tomorrow Night Burns"
+set -a __DARK_THEMES "Tomorrow Night Eighties"
+set -a __DARK_THEMES "Toy Chest"
+set -a __DARK_THEMES "traffic"
+set -a __DARK_THEMES "Treehouse"
+set -a __DARK_THEMES "Twilight"
+set -a __DARK_THEMES "Ubuntu"
+set -a __DARK_THEMES "Ultra Dark"
+set -a __DARK_THEMES "Ultra Violent"
+set -a __DARK_THEMES "Under The Sea"
+set -a __DARK_THEMES "urban"
+set -a __DARK_THEMES "Urple"
+set -a __DARK_THEMES "Vague"
+set -a __DARK_THEMES "Vaughn"
+set -a __DARK_THEMES "Vercel"
+set -a __DARK_THEMES "Vesper"
+set -a __DARK_THEMES "Vibrant Ink"
+set -a __DARK_THEMES "Violet Dark"
+set -a __DARK_THEMES "Violite"
+set -a __DARK_THEMES "Warm Neon"
+set -a __DARK_THEMES "Wez"
+set -a __DARK_THEMES "Whimsy"
+set -a __DARK_THEMES "Wild Cherry"
+set -a __DARK_THEMES "Wilmersdorf"
+set -a __DARK_THEMES "Wombat"
+set -a __DARK_THEMES "Wryan"
+set -a __DARK_THEMES "Xcode Dark"
+set -a __DARK_THEMES "Xcode Dark hc"
+set -a __DARK_THEMES "Xcode WWDC"
+set -a __DARK_THEMES "Zenbones Dark"
+set -a __DARK_THEMES "Zenburn"
+set -a __DARK_THEMES "Zenburned"
+set -a __DARK_THEMES "Zenwritten Dark"
 
-    if grep -q "^theme" $config
-        # theme line exists — replace it
-        sed -i '' "s|^theme = .*|theme = $selected|" $config
-    else
-        # theme line doesn't exist — add it
-        echo "theme = $selected" >> $config
+function __is_daytime
+    set hour (math (date +%H))
+    test $hour -ge 7; and test $hour -lt 19
+end
+
+function __shuffle_indices
+    set total $argv[1]
+    set indices
+    for i in (seq 1 $total)
+        set indices $indices $i
+    end
+    set result
+    while test (count $indices) -gt 0
+        set pos (math "($RANDOM % (count $indices)) + 1")
+        set result $result $indices[$pos]
+        set -e indices[$pos]
+    end
+    string join " " $result
+end
+
+function __read_state
+    set key $argv[1]
+    if test -f $__THEME_STATE
+        grep "^$key=" $__THEME_STATE | sed 's/^[^=]*=//'
     end
 end
 
-rotate_ghostty_theme   # call it every startup
+function __write_state
+    set key $argv[1]
+    set value $argv[2]
+    touch $__THEME_STATE
+    if grep -q "^$key=" $__THEME_STATE
+        sed -i '' "s|^$key=.*|$key=$value|" $__THEME_STATE
+    else
+        echo "$key=$value" >> $__THEME_STATE
+    end
+end
 
+function __apply_theme
+    set theme $argv[1]
+    touch $__GHOSTTY_CONFIG
+    if grep -q "^theme" $__GHOSTTY_CONFIG 2>/dev/null
+        sed -i '' "s|^theme = .*|theme = $theme|" $__GHOSTTY_CONFIG
+    else
+        echo "theme = $theme" >> $__GHOSTTY_CONFIG
+    end
+    echo "🎨  $theme — reload with Cmd+Shift+,"
+end
+
+function __current_theme
+    if __is_daytime
+        set pos   (__read_state light_pos)
+        set order (string split " " (__read_state light_order))
+        echo $__LIGHT_THEMES[$order[$pos]]
+    else
+        set pos   (__read_state dark_pos)
+        set order (string split " " (__read_state dark_order))
+        echo $__DARK_THEMES[$order[$pos]]
+    end
+end
+
+function __init_state
+    if test -z "(__read_state light_order)"
+        __write_state light_order (__shuffle_indices (count $__LIGHT_THEMES))
+        __write_state light_pos 1
+    end
+    if test -z "(__read_state dark_order)"
+        __write_state dark_order (__shuffle_indices (count $__DARK_THEMES))
+        __write_state dark_pos 1
+    end
+end
+
+function theme-next
+    __init_state
+    if __is_daytime
+        set pos   (__read_state light_pos)
+        set order (string split " " (__read_state light_order))
+        set total (count $order)
+        set next  (math "$pos % $total + 1")
+        if test $next -eq 1
+            __write_state light_order (__shuffle_indices (count $__LIGHT_THEMES))
+        end
+        __write_state light_pos $next
+    else
+        set pos   (__read_state dark_pos)
+        set order (string split " " (__read_state dark_order))
+        set total (count $order)
+        set next  (math "$pos % $total + 1")
+        if test $next -eq 1
+            __write_state dark_order (__shuffle_indices (count $__DARK_THEMES))
+        end
+        __write_state dark_pos $next
+    end
+    __apply_theme (__current_theme)
+end
+
+# EXISTING CONFIG
 starship init fish | source
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$HOME/.local/bin" $PATH
+
+__init_state
+__apply_theme (__current_theme)
