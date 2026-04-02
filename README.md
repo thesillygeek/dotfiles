@@ -1,33 +1,48 @@
-# dotfiles
-
 My terminal setup — Ghostty + Fish + Starship + Volta
 
-## what's in here
-- `fish/config.fish` — Fish shell config with auto theme rotation
-- `ghostty/config` — Ghostty terminal config
+## stack
+
+| Tool | Role |
+|---|---|
+| Ghostty | Terminal emulator |
+| Fish | Shell |
+| Starship | Prompt renderer |
+| Volta | Node version manager |
 
 ## theme system
-- dark themes, light themes, shuffled automatically
-- 7am–7pm = light themes, 7pm–7am = dark themes
-- `theme-next` command to manually advance
 
-spent a weekend going from "why does my terminal have purple icons" to building a fully automated terminal setup from scratch. here's everything i did 🧵
+Automatically rotates through all 463 built-in Ghostty themes,
+split by luminance into light and dark lists.
 
-🖥️ the stack
-ghostty (terminal) + fish shell + starship (prompt) + volta (node version manager)
+- 7am–7pm → shuffled light themes (78 total)
+- 7pm–7am → shuffled dark themes (385 total)
+- Type `theme-next` anywhere to skip to the next theme
+- Full list cycles then reshuffles automatically
+- State persists across sessions in `~/.config/ghostty/theme_state`
 
-four separate programs, all wired together via one config file that runs every time i open a terminal
+## files
+```
+fish/config.fish              — Fish shell config + theme rotation logic
+ghostty/config                — Ghostty terminal config
+ghostty_theme_builder.fish    — One-time script to auto-discover and
+                                categorise all themes from your Ghostty
+                                installation by background luminance
+```
 
-🎨 the theme system i built
-— 10 dark themes, 5 light themes, all shuffled
-— automatically switches between light/dark lists based on time of day (7am–7pm light, 7pm–7am dark)
-— type theme-next anywhere to skip to the next theme
-— state persists across sessions, reshuffles when the full list cycles through
+## setup on a new machine
 
-🦀 what i learned
-— the difference between a terminal emulator, a shell, and a prompt renderer
-— what PATH actually is and why order matters
-— why Rust keeps showing up everywhere (spoiler: it solved a 50-year-old memory safety problem)
-— how Fish's config.fish boots your entire dev environment before you type a single character
+1. Install Ghostty, Fish, Starship, Volta
+2. Set Fish as default shell: `chsh -s /usr/local/bin/fish`
+3. Copy files to their locations:
+```fish
+cp fish/config.fish ~/.config/fish/config.fish
+cp ghostty/config   ~/.config/ghostty/config
+```
 
-full config on github 👇
+4. Run the theme builder to regenerate theme lists from your local install:
+```fish
+fish ghostty_theme_builder.fish
+```
+
+5. Open a new terminal window — themes apply automatically
+
