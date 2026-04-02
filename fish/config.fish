@@ -574,4 +574,4 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH "$HOME/.local/bin" $PATH
 
 __init_state
-__apply_theme (__current_theme)
+echo "🎨  "(__current_theme)
