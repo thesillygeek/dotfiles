@@ -482,7 +482,7 @@ function __shuffle_indices
     end
     set result
     while test (count $indices) -gt 0
-        set pos (math "($RANDOM % (count $indices)) + 1")
+        set pos (random 1 (count $indices))
         set result $result $indices[$pos]
         set -e indices[$pos]
     end
@@ -531,11 +531,13 @@ function __current_theme
 end
 
 function __init_state
-    if test -z "(__read_state light_order)"
+    set _lo (__read_state light_order)
+    if test -z "$_lo"
         __write_state light_order (__shuffle_indices (count $__LIGHT_THEMES))
         __write_state light_pos 1
     end
-    if test -z "(__read_state dark_order)"
+    set _do (__read_state dark_order)
+    if test -z "$_do"
         __write_state dark_order (__shuffle_indices (count $__DARK_THEMES))
         __write_state dark_pos 1
     end
